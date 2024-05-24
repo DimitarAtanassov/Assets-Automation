@@ -2,11 +2,11 @@ import requests
 import logging
 import xml.etree.ElementTree as ET
 import concurrent.futures
-import time  # Import the time module
+import time 
 class Automator:
     
     qualys_username = ""                                # Enter Qualys Username        
-    qualys_password = ""                                # Enter Qualys Password
+    qualys_password = ""                    # Enter Qualys Password
     qualys_guard_url = "https://qualysapi.qg4.apps.qualys.com"   # Enter url 
     search_assets_url = "/qps/rest/2.0/search/am/asset"
     
@@ -78,7 +78,7 @@ class Automator:
     def get_all_assets(self):
         total_asset_count = int(input("Enter asset count: "))  # Manually set the total asset count
         tag_name = "MS Azure Running Systems"
-        batch_size = 100  # Adjusted to match the API limit
+        batch_size = 100  # 100 = API Limit
         all_assets = []
 
         def fetch_assets(offset):
@@ -109,7 +109,7 @@ class Automator:
             futures = []
             for offset in range(1, total_asset_count + 1, batch_size):
                 futures.append(executor.submit(fetch_assets, offset))
-                time.sleep(1)  # Introduce a 1-second delay between API calls
+                time.sleep(1)  # 1-second delay between API calls
 
             for future in concurrent.futures.as_completed(futures):
                 assets = future.result()
