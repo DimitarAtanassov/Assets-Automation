@@ -36,6 +36,4 @@ Before running the script, ensure you have the following:
 - `automator.py`: Main Python script.
 - `assets.csv`: CSV file containing asset information.
 
-## License
 
-This project is licensed under the [MIT License](LICENSE).
